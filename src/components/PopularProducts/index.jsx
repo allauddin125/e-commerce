@@ -15,7 +15,7 @@ const PRODUCTS_PER_PAGE = 10
 
 /** Container: owns the active category and decides what the grid receives. */
 function PopularProducts({
-  title = 'Popular Products',
+  title = 'Popular Products11',
   limit = PRODUCTS_PER_PAGE,
   onAddToCart,
   onAddToWishlist,
