@@ -1,0 +1,1 @@
+I’ll read the curated files only and anchor the guide in what’s actually present. I’m starting with the package/readme/context and the main React entry points, then I’ll follow the product flow through data, service, hook, and UI.

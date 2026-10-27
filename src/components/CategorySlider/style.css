@@ -1,0 +1,41 @@
+/* Swiper fixes + card shadows. Baaki styling Tailwind me CategorySlider.jsx ke andar hai */
+
+/* Sab cards ki height barabar rahe, chahe naam 1 line ka ho ya 2 line ka */
+.category-slider .swiper-slide {
+  height: auto;
+}
+
+/* Pehle/aakhri slide par arrow button faded ho jaye */
+.category-nav-btn.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/*
+ * Premium shadow = ek badi shadow nahi, balki 3 layer:
+ *   1. baal-barabar outline  -> card ka edge define karti hai
+ *   2. tight chhoti shadow   -> surface se contact
+ *   3. badi soft shadow      -> depth / floating feel
+ * Opacity jaan-bujh ke bahut kam hai — asli premium shadow dikhti nahi, mehsoos hoti hai.
+ */
+.category-card {
+  box-shadow:
+    0 0 0 1px rgba(16, 24, 40, 0.04),
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 6px 16px -6px rgba(16, 24, 40, 0.1);
+}
+
+.category-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(16, 24, 40, 0.05),
+    0 2px 4px rgba(16, 24, 40, 0.06),
+    0 16px 32px -12px rgba(16, 24, 40, 0.22);
+}
+
+/* Icon circle thodi si upar uthi hui lage */
+.category-card__icon {
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 4px 10px -4px rgba(16, 24, 40, 0.12);
+}

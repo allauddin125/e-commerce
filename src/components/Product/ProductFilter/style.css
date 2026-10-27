@@ -1,0 +1,9 @@
+/* Tabs scroll sideways on small screens, but without a visible scrollbar */
+.product-filter {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.product-filter::-webkit-scrollbar {
+  display: none;
+}

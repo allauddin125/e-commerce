@@ -1,0 +1,55 @@
+/* Swiper-only customisation. Layout/sizing lives in Tailwind inside BannerSlider.jsx */
+
+.banner-slider {
+  --swiper-navigation-size: 40px;
+  --swiper-navigation-sides-offset: 20px;
+  --swiper-pagination-bottom: 12px;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.55;
+}
+
+/* Arrows */
+.banner-slider .swiper-button-prev,
+.banner-slider .swiper-button-next {
+  border-radius: 9999px;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.banner-slider .swiper-button-prev:hover,
+.banner-slider .swiper-button-next:hover {
+  background: #fff;
+}
+
+/* Swiper stretches its arrow SVG to fill the button, so pin the icon size */
+.banner-slider .swiper-navigation-icon {
+  width: auto;
+  height: 18px;
+}
+
+/* Pagination dots */
+.banner-slider .swiper-pagination-bullet {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: width 0.25s ease;
+}
+
+.banner-slider .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 9999px;
+}
+
+/* Mobile: smaller arrows, no rounded corners (full-width banner) */
+@media (max-width: 639px) {
+  .banner-slider {
+    --swiper-navigation-size: 32px;
+    --swiper-navigation-sides-offset: 12px;
+  }
+
+  .banner-slider .swiper-navigation-icon {
+    height: 14px;
+  }
+}

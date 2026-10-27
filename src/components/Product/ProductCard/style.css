@@ -1,0 +1,95 @@
+/* Layered shadow keeps the card lifted without a hard border */
+.product-card {
+  box-shadow:
+    0 0 0 1px rgba(16, 24, 40, 0.04),
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 6px 16px -8px rgba(16, 24, 40, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(16, 24, 40, 0.05),
+    0 2px 4px rgba(16, 24, 40, 0.06),
+    0 16px 32px -12px rgba(16, 24, 40, 0.2);
+}
+
+/* ---------------------------------------------------------------
+   Hover overlay over the product image — pure CSS, no React state
+   --------------------------------------------------------------- */
+.product-card__overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* .group is the image wrapper; focus-within keeps it keyboard reachable */
+.group:hover .product-card__overlay,
+.group:focus-within .product-card__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* White icon box pops in slightly */
+.product-card__box {
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.group:hover .product-card__box,
+.group:focus-within .product-card__box {
+  transform: scale(1);
+}
+
+/* ---------------------------------------------------------------
+   Green label above the box — shows whichever action is hovered
+   --------------------------------------------------------------- */
+.product-card__label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: #16a34a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.product-card__actions:has(.product-card__action--wishlist:hover) .product-card__label--wishlist,
+.product-card__actions:has(.product-card__action--wishlist:focus-visible) .product-card__label--wishlist,
+.product-card__actions:has(.product-card__action--quick:hover) .product-card__label--quick,
+.product-card__actions:has(.product-card__action--quick:focus-visible) .product-card__label--quick {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ---------------------------------------------------------------
+   Touch devices have no hover, so the actions sit in the corner
+   instead of behind a dark overlay that would never appear.
+   --------------------------------------------------------------- */
+@media (hover: none) {
+  .product-card__overlay {
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+
+  .product-card__box {
+    transform: none;
+  }
+
+  .product-card__label {
+    display: none;
+  }
+}
